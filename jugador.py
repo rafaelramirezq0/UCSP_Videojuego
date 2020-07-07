@@ -96,7 +96,8 @@ class Player(pygame.sprite.Sprite):
         self.speed_x = 0
         self.gravity()
     def ataque(self):
-        self.speed_x*=2
+        if self.imagen!=len(run)-1:
+            self.speed_x*=2
     #frenos (funciona de forma similar a la gravedad, solo que desacelera)
     def deten_ataque(self):
         if self.speed_x>5:
