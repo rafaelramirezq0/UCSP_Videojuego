@@ -68,13 +68,17 @@ def checkCollision(sprite1, sprite2):
 
 def mostrar_vidas(x,y):
     vidas_render =  tipo_letra1.render("Vidas : "+ str
-    (vidas), True, (255,255,255))
+    (vidas), True, blanco)
     screen.blit(vidas_render,(x,y))
 
 def game_over(x,y):
-    imprimir= tipo_letra2.render("GAME OVER ", True, (255,255,255))
+    imprimir= tipo_letra2.render("GAME OVER ", True, blanco)
     screen.blit(imprimir,(x,y))
-    
+
+def win(x,y):
+    imprimir= tipo_letra2.render("YOU WIN ", True, blanco)
+    screen.blit(imprimir,(x,y))
+
 #JUEGO
 tipo_letra1 = pygame.font.Font('freesansbold.ttf', 28)
 tipo_letra2 = pygame.font.Font('freesansbold.ttf', 100)
@@ -123,19 +127,22 @@ while not done:
         game_over(100,250)
         jugador.die()
     if checkCollision(spider,jugador)==True:
-        if jugador.imagen!=7:
+        if jugador.imagen!=7:#imagen cuando está atacando
             gets_hit=True
             vidas-=1
             if vidas>0:
                 jugador.get_hurt()
     else:
         gets_hit=False
-    if checkCollision(rat,jugador)==True:
+    if checkCollision(rat,jugador)==True and rat in listade_todoslos_sprites:
         if jugador.imagen!=7:
             gets_hit=True
             vidas-=3
             if vidas>0:
                 jugador.get_hurt()
+        else:
+            listade_todoslos_sprites.remove(rat)
+            
     else:
         gets_hit=False
     listade_todoslos_sprites.draw(screen)
