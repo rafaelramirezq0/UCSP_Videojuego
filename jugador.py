@@ -54,11 +54,7 @@ dead4i=pygame.transform.flip(dead4,True,False)
 dead=[dead1,dead2,dead3,dead4]
 dead_inv=[dead1i,dead2i,dead3i,dead4i]
 dies=[dead,dead_inv]
-#===========================================
-def checkCollision(self, sprite1, sprite2):
-        col = pygame.sprite.collide_rect(sprite1, sprite2)
-        return col
-#===========================================
+
 class Player(pygame.sprite.Sprite):
     #velocidad inicial
     speed_x=0
