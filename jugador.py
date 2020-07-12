@@ -77,6 +77,7 @@ class Player(pygame.sprite.Sprite):
         
     #esto efectúa el movimiento, va "actualizando" la velocidad e imagen
     def update(self,collision,vida):
+        self.vida=vida
         self.ancho=self.image.get_size()[1]
         self.largo=self.image.get_size()[0]
         self.gravity()
@@ -86,7 +87,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.speed_y
         #animación
         self.imagen += self.cambio
-        if self.imagen > len(run)-2 or (self.speed_x==0 and collision==False and vida>0):
+        if self.imagen > len(run)-2 or (self.speed_x==0 and collision==False and self.vida>0):
             self.imagen = 0
         if self.speed_y!=0:
             self.imagen = 5
@@ -112,13 +113,15 @@ class Player(pygame.sprite.Sprite):
     #movimientos sin considerar plataformas
     
     def izquierda(self):
-        self.speed_x = -5
-        self.cambio = 1
-        self.direc=1
+        if self.vida>0:
+            self.speed_x = -5
+            self.cambio = 1
+            self.direc=1
     def derecha(self):
-        self.speed_x = 5
-        self.cambio = 1
-        self.direc=0
+        if self.vida>0:
+            self.speed_x = 5
+            self.cambio = 1
+            self.direc=0
     def saltar(self):
         if self.rect.bottom >= 600:
             self.speed_y = -10
