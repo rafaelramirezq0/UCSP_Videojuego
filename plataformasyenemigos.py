@@ -1,5 +1,6 @@
 import pygame, sys, random
 from jugador import Player
+
 ancho=800
 largo=600
 screen=pygame.display.set_mode([ancho,largo])
@@ -21,6 +22,7 @@ enemigo_spider2=pygame.image.load("game/Sprites/spider/idle2.png")
 enemigo_spider3=pygame.image.load("game/Sprites/spider/idle3.png")
 enemigo_spider4=pygame.image.load("game/Sprites/spider/idle4.png")
 spiders=[enemigo_spider,enemigo_spider2,enemigo_spider3,enemigo_spider4]
+
 class Enemy(pygame.sprite.Sprite):
     def __init__(self,movs,velocidad):
         super().__init__()
@@ -61,6 +63,19 @@ class Rat(Enemy):
             self.speed = 3
             self.imagen = 0
         self.image = self.movs[self.imagen]
+class Plataforma(pygame.sprite.Sprite):
+ 
+    def __init__(self, largo, alto, x, y):
+        super().__init__()
+        self.image = pygame.Surface([largo, alto])
+        self.image.fill(blanco)
+        self.rect = self.image.get_rect()                    
+        self.rect.x = x
+        self.rect.y = y
+plat1=Plataforma(150,40,200,220)
+plat2=Plataforma(150,40,600,450)
+plat3=Plataforma(100,30,400,350)
+plataformas=pygame.sprite.Group()
 
 def checkCollision(sprite1, sprite2):
         col = pygame.sprite.collide_rect(sprite1, sprite2)
@@ -87,7 +102,8 @@ jugador=Player()
 rat=Rat(rats,3)
 spider=Spider(spiders,3)
 enemigos.add(rat,spider)
-listade_todoslos_sprites.add(jugador,enemigos)
+plataformas.add(plat1,plat2,plat3)
+listade_todoslos_sprites.add(jugador,enemigos,plataformas)
 jugador.rect.x=0
 jugador.rect.y=600-jugador.rect.height
 rat.rect.x=800//2-(rat.size[0]//2)
@@ -98,7 +114,7 @@ gets_hit = False
 done=False
 while not done:
     screen.blit(background,(0,0))
-    jugador.update(gets_hit,vidas)
+    jugador.update(gets_hit,vidas,plataformas)
     rat.mover()
     spider.mover()
     for event in pygame.event.get():
