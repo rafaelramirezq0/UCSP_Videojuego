@@ -54,7 +54,6 @@ dead4i=pygame.transform.flip(dead4,True,False)
 dead=[dead1,dead2,dead3,dead4]
 dead_inv=[dead1i,dead2i,dead3i,dead4i]
 dies=[dead,dead_inv]
-
 class Player(pygame.sprite.Sprite):
     #velocidad inicial
     speed_x=0
@@ -72,7 +71,8 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         
     #esto efectúa el movimiento, va "actualizando" la velocidad e imagen
-    def update(self,collision,vida):
+    def update(self,collision,vida,plataformas):
+        self.plataformas=plataformas
         self.vida=vida
         self.ancho=self.image.get_size()[1]
         self.largo=self.image.get_size()[0]
@@ -80,7 +80,27 @@ class Player(pygame.sprite.Sprite):
         self.deten_ataque()
         #moverse
         self.rect.x += self.speed_x
+        # Revisar si golpeamos con algo (bloques con colision)
+        bloque_col_list = pygame.sprite.spritecollide(self, self.plataformas, False)
+        for bloque in bloque_col_list:
+            # Si nos movemos a la derecha,
+            # ubicar jugador a la izquierda del objeto golpeado
+            if self.speed_x > 0:
+                self.rect.right = bloque.rect.left
+            elif self.speed_x < 0:
+                # De otra forma nos movemos a la izquierda
+                self.rect.left = bloque.rect.right
         self.rect.y += self.speed_y
+        bloque_col_list = pygame.sprite.spritecollide(self, self.plataformas, False)
+        for bloque in bloque_col_list:
+            
+            # Reiniciamos posicion basado en el arriba/bajo del objeto
+            if self.speed_y > 0:
+                self.rect.bottom = bloque.rect.top
+            elif self.speed_y < 0:
+                self.rect.top = bloque.rect.bottom
+
+            self.speed_y = 0
         #animación
         self.imagen += self.cambio
         if self.imagen > len(run)-2 or (self.speed_x==0 and collision==False and self.vida>0):
@@ -89,8 +109,8 @@ class Player(pygame.sprite.Sprite):
             self.imagen = 5
         if abs(self.speed_x)>5:
             self.imagen=len(run)-1
-        self.image=runs[self.direc][self.imagen]
-        #falta aquí chocar (o sea, poner lo que pasa si choca)   
+        self.image=runs[self.direc][self.imagen] 
+ 
     #gravedad
     def gravity(self):
         if self.speed_y == 0:
@@ -105,9 +125,9 @@ class Player(pygame.sprite.Sprite):
         if self.rect.x >800-self.largo:
             self.rect.x = 800-self.largo
         if self.rect.x <0:
-            self.rect.left =0       
-    #movimientos sin considerar plataformas
-    
+            self.rect.left =0    
+
+    #movimientos 
     def izquierda(self):
         if self.vida>0:
             self.speed_x = -5
@@ -119,7 +139,10 @@ class Player(pygame.sprite.Sprite):
             self.cambio = 1
             self.direc=0
     def saltar(self):
-        if self.rect.bottom >= 600:
+        self.rect.y += 2
+        plataforma_col_lista = pygame.sprite.spritecollide(self, self.plataformas, False)
+        self.rect.y -= 2
+        if len(plataforma_col_lista)>0 or self.rect.bottom >= 600: #si está en una plataforma o piso
             self.speed_y = -10
     def stop(self):
         self.speed_x = 0
