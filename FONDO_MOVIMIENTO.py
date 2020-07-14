@@ -2,7 +2,7 @@ import pygame, sys
 import time
 import random
 from game_intro import *
-from jugador import *
+from JUGADOR import *
 pygame.init()
 pygame.mixer.init()
 pygame.init()
@@ -86,8 +86,8 @@ class Plataforma(pygame.sprite.Sprite):
  
     def __init__(self, largo, alto, x, y):
         super().__init__()
-        self.image = pygame.Surface([largo, alto])
-        self.image.fill(blanco)
+        self.image=pygame.image.load("Sprites/tronco.jpg")
+        self.image=pygame.transform.scale(self.image,(100,20))
         self.rect = self.image.get_rect()                    
         self.rect.x = x
         self.rect.y = y
