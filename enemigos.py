@@ -21,15 +21,20 @@ enemigo_spider2=pygame.image.load("game/Sprites/spider/idle2.png")
 enemigo_spider3=pygame.image.load("game/Sprites/spider/idle3.png")
 enemigo_spider4=pygame.image.load("game/Sprites/spider/idle4.png")
 spiders=[enemigo_spider,enemigo_spider2,enemigo_spider3,enemigo_spider4]
+
+
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self,movs,velocidad):
+    def __init__(self,movs,velocidad,direc=None):
         super().__init__()
         self.imagen=0
-        self.image = movs[self.imagen]
+        if direc!=None:
+            self.image = movs[self.direc][self.imagen]
+        else:
+            self.image = movs[self.imagen]
         self.speed = velocidad
         self.rect=self.image.get_rect()
         self.size=self.image.get_size()
-        self.movs=movs   
+        self.movs=movs
 class Spider(Enemy):
     def __init__(self,movs,velocidad):
         super().__init__(movs,velocidad)
@@ -60,4 +65,28 @@ class Rat(Enemy):
             self.speed*=-1
             self.imagen = 0
         self.image = self.movs[self.imagen]
+class Boss(Enemy):
+    direc=1
+    cambio=1
+    def __init__(self,movs,velocidad,paredes):
+        super().__init__(movs,velocidad,self.direc)
+        self.paredes=paredes
+    def mover(self):
+        if self.imagen>=len(self.movs[self.direc]):
+            self.imagen=0
+        self.rect.x-=self.speed
+        self.image = self.movs[self.direc][self.imagen]
+        #izquierda
+        if self.rect.x <= self.paredes[0] and self.speed>0:
+            self.speed *= -1
+            self.direc = 0
+        #derecha
+        elif self.rect.x >= self.paredes[1]- self.size[0] and self.speed<0:
+            self.speed *= -1
+            self.direc = 1
+        self.imagen+=self.cambio
+    def attack(self,movs):
+        self.movs=movs
+    def dead(self,movs): 
+        self.movs=movs
 
