@@ -22,8 +22,10 @@ class Plataforma(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()                    
         self.rect.x = x
         self.rect.y = y
+        self.x_inicial=x
     def mover(self,dfx):
         self.rect.x += dfx
+      
 plat1=Plataforma(150,40,200,220)
 plat2=Plataforma(150,40,600,450)
 plat3=Plataforma(100,30,400,350)
