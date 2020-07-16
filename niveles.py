@@ -45,6 +45,76 @@ enemigo_spider3=pygame.image.load("game/Sprites/spider/idle3.png")
 enemigo_spider4=pygame.image.load("game/Sprites/spider/idle4.png")
 spiders=[enemigo_spider,enemigo_spider2,enemigo_spider3,enemigo_spider4]
 
+#Boss
+#derecha
+boss1= pygame.image.load("game/Sprites/Boss/imagen_boss1.png")
+boss2= pygame.image.load("game/Sprites/Boss/imagen_boss2.png")
+boss3= pygame.image.load("game/Sprites/Boss/imagen_boss3.png")
+boss4= pygame.image.load("game/Sprites/Boss/imagen_boss4.png")
+boss5= pygame.image.load("game/Sprites/Boss/imagen_boss5.png")
+boss6= pygame.image.load("game/Sprites/Boss/imagen_boss6.png")
+boss_der=[boss1,boss1,boss1,boss1,boss1,boss1,boss2,boss2,boss2,boss2,boss2,boss2,
+boss3,boss3,boss3,boss3,boss3,boss3,boss4,boss4,boss4,boss4,boss4,boss4,
+boss5,boss5,boss5,boss5,boss5,boss5,boss6,boss6,boss6,boss6,boss6,boss6]
+#___________________
+boss_daño1= pygame.image.load("game/Sprites/Boss/damage1.png")
+boss_daño2= pygame.image.load("game/Sprites/Boss/damage2.png")
+boss_daño3= pygame.image.load("game/Sprites/Boss/damage3.png")
+boss_daño4= pygame.image.load("game/Sprites/Boss/damage4.png")
+boss_daño5= pygame.image.load("game/Sprites/Boss/damage5.png")
+boss_daño6= pygame.image.load("game/Sprites/Boss/damage6.png")
+boss_daños=[boss_daño6,boss_daño6,boss_daño6,boss_daño6,boss_daño6,boss_daño6]
+#___________________
+boss_inv1= pygame.transform.flip(boss1,True,False)
+boss_inv2= pygame.transform.flip(boss2,True,False)
+boss_inv3= pygame.transform.flip(boss3,True,False)
+boss_inv4= pygame.transform.flip(boss4,True,False)
+boss_inv5= pygame.transform.flip(boss5,True,False)
+boss_inv6= pygame.transform.flip(boss6,True,False)
+boss_izq=[boss_inv1,boss_inv1,boss_inv1,boss_inv1,boss_inv1,boss_inv1,
+boss_inv2,boss_inv2,boss_inv2,boss_inv2,boss_inv2,boss_inv2,
+boss_inv3,boss_inv3,boss_inv3,boss_inv3,boss_inv3,boss_inv3,
+boss_inv4,boss_inv4,boss_inv4,boss_inv4,boss_inv4,boss_inv4,
+boss_inv5,boss_inv5,boss_inv5,boss_inv5,boss_inv5,boss_inv5,
+boss_inv6,boss_inv6,boss_inv6,boss_inv6,boss_inv6,boss_inv6]
+boss_runs=[boss_der,boss_izq]
+#___________________
+boss_daño_inv1= pygame.transform.flip(boss_daño1,True,False)
+boss_daño_inv2= pygame.transform.flip(boss_daño2,True,False)
+boss_daño_inv3= pygame.transform.flip(boss_daño3,True,False)
+boss_daño_inv4= pygame.transform.flip(boss_daño4,True,False)
+boss_daño_inv5= pygame.transform.flip(boss_daño5,True,False)
+boss_daño_inv6= pygame.transform.flip(boss_daño6,True,False)
+boss_daño_izq=[boss_daño_inv6,boss_daño_inv6,boss_daño_inv6,boss_daño_inv6,boss_daño_inv6,boss_daño_inv6]
+boss_daños=[boss_daños,boss_daño_izq]
+#--------------SPRITES DE ATAQUE BOSS------------------------
+boss_attack_inv1= pygame.image.load("game/Sprites/Boss/ataque1.png")
+boss_attack_inv2= pygame.image.load("game/Sprites/Boss/ataque2.png")
+boss_attack_inv3= pygame.image.load("game/Sprites/Boss/ataque3.png")
+boss_attack_inv4= pygame.image.load("game/Sprites/Boss/ataque4.png")
+boss_attack_inv5= pygame.image.load("game/Sprites/Boss/ataque5.png")
+boss_attack_inv6= pygame.image.load("game/Sprites/Boss/ataque6.png")
+boss_attack_izq= [boss_attack_inv1,boss_attack_inv1,boss_attack_inv1,boss_attack_inv1,boss_attack_inv1,
+boss_attack_inv2,boss_attack_inv2,boss_attack_inv2,boss_attack_inv2,boss_attack_inv2,
+boss_attack_inv3,boss_attack_inv3,boss_attack_inv3,boss_attack_inv3,boss_attack_inv3,
+boss_attack_inv4,boss_attack_inv4,boss_attack_inv4,boss_attack_inv4,boss_attack_inv4,
+boss_attack_inv5,boss_attack_inv5,boss_attack_inv5,boss_attack_inv5,boss_attack_inv5,
+boss_attack_inv6,boss_attack_inv6,boss_attack_inv6,boss_attack_inv6,boss_attack_inv6,]
+
+boss_attack1=pygame.transform.flip(boss_attack_inv1,True,False)
+boss_attack2=pygame.transform.flip(boss_attack_inv2,True,False)
+boss_attack3=pygame.transform.flip(boss_attack_inv3,True,False)
+boss_attack4=pygame.transform.flip(boss_attack_inv4,True,False)
+boss_attack5=pygame.transform.flip(boss_attack_inv5,True,False)
+boss_attack6=pygame.transform.flip(boss_attack_inv6,True,False) 
+boss_attack_der= [boss_attack1,boss_attack1,boss_attack1,boss_attack1,boss_attack1,
+boss_attack2,boss_attack2,boss_attack2,boss_attack2,boss_attack2,
+boss_attack3,boss_attack3,boss_attack3,boss_attack3,boss_attack3,
+boss_attack4,boss_attack4,boss_attack4,boss_attack4,boss_attack4,
+boss_attack5,boss_attack5,boss_attack5,boss_attack5,boss_attack5,
+boss_attack6,boss_attack6,boss_attack6,boss_attack6,boss_attack6,]
+boss_attacks=[boss_attack_izq,boss_attack_der]
+
 car_plat1=[[150,40,200,220],[150,40,600,450],[100,30,400,350],[150,40,1000,450],[100,30,1200,350],
 [100,30,1400,220],[150,40,2600,450],[100,30,2800,350],[150,40,3000,220],[100,30,3500,220]]
 car_plat2=[[150,40,200,220],[150,40,600,450],[100,30,400,350],[150,40,1000,450],[100,30,1200,350],
@@ -83,9 +153,19 @@ def checkCollision(sprite1, sprite2):
         return col
 
 def mostrar_vidas(x,y):
-    vidas_render =  tipo_letra1.render("Vidas : "+ str
+    vidas_render =  tipo_letra1.render("Vida : "+ str
     (vidas), True, blanco)
     screen.blit(vidas_render,(x,y))
+
+def mostrar_nivel(x,y):
+    nivel_render =  tipo_letra1.render("Nivel : "+ str
+    (nivel), True, blanco)
+    screen.blit(nivel_render,(x,y))
+
+def mostrar_nivel_Grande(x,y):
+    nivel_render =  tipo_letra2.render("Nivel "+ str
+    (nivel), True, blanco)
+    screen.blit(nivel_render,(x,y))
 
 def game_over(x,y):
     imprimir= tipo_letra2.render("GAME OVER ", True, blanco)
@@ -266,6 +346,7 @@ while Juego:
     tipo_letra1 = pygame.font.Font('freesansbold.ttf', 28)
     tipo_letra2 = pygame.font.Font('freesansbold.ttf', 100)
     vidas=1000
+    vidas_boss=300
     nivel=1
     while Partida:
         Nivel = True
@@ -281,9 +362,14 @@ while Juego:
         enemigos_rata=escribir_ratas(nivel)
         enemigos_spider=escribir_arañas(nivel)
         enemigos = pygame.sprite.Group()
+        boss=Boss(boss_runs,5,[jugador.rect.x-500,jugador.rect.x+500])
+        boss.rect.x=400
+        boss.rect.y=600-(boss.size[1])
+        if nivel==3:
+            enemigos.add(boss)
         enemigos.add(enemigos_rata,enemigos_spider)
         listade_todoslos_sprites.add(jugador,enemigos,plataformas)
-        
+                    
         while Nivel == True:
 
             screen.blit(fondo, [fondo_x,0])
@@ -292,6 +378,7 @@ while Juego:
                 enemigo.mover()
             for rat in enemigos_rata:
                 rat.paredes = [fondo_x,fondo_x+espacio]
+            boss.paredes = [jugador.rect.x-600,jugador.rect.x+600]
             if vidas >0:
                 if mover_fondo == True or jugador.speed_x!=0:
                     fondo_x += dfx
@@ -320,7 +407,7 @@ while Juego:
                     if event.key == pygame.K_RIGHT:
                         jugador.derecha()
                         mover_fondo = True
-                        dfx = -5     
+                        dfx = -5   
                         
                     if event.key == pygame.K_UP:
                         jugador.saltar() 
@@ -342,6 +429,8 @@ while Juego:
             
             if vidas > 0:
                 mostrar_vidas(10,10)
+                if nivel<=3:
+                    mostrar_nivel(670,10)
             elif vidas <=0:
                 game_over(100,250)
                 jugador.die()
@@ -371,12 +460,34 @@ while Juego:
                         listade_todoslos_sprites.remove(rat)
                 else:
                     gets_hit=False
-
+            if checkCollision(boss,jugador)==True and boss in listade_todoslos_sprites:
+                    if jugador.imagen!=7:
+                        gets_hit=True
+                        vidas-=3
+                        boss.attack(boss_attacks)
+                        if vidas>0:
+                            jugador.get_hurt()
+                    else:
+                        if vidas_boss>0:
+                            vidas_boss-=3
+                            boss.dead(boss_daños)
+                        if vidas_boss<=0:
+                            enemigos.remove(boss)
+                            listade_todoslos_sprites.remove(boss)
+            else:
+                gets_hit=False
+                boss.movs=boss_runs
             if len(enemigos)==0:
                 nivel+=1
                 if nivel>3:
                     win(180,260)
                 else:
+                    time.sleep(0.5)
+                    pygame.draw.rect(screen,negro,(0,0,ancho,largo))
+                    mostrar_nivel_Grande(200,250)
+                    pygame.display.flip()   
+                    time.sleep(2)
+                              
                     Nivel=False
                 
 
