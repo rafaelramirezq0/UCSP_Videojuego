@@ -2,7 +2,7 @@ import pygame, sys
 
 screen=pygame.display.set_mode([800,600])
 reloj=pygame.time.Clock()
-background=pygame.image.load("game/forest_loop.png")
+background=pygame.image.load("Backgrounds/forest_loop.png")
 #colores
 blanco=(255,255,255)
 negro=(0,0,0)
@@ -11,14 +11,14 @@ pygame.init()
 
 listade_todoslos_sprites = pygame.sprite.Group()
 #Jugador (o sea el perrito)
-run1=pygame.image.load("game/run1.png")
-run2=pygame.image.load("game/run2.png")
-run3=pygame.image.load("game/run3.png")
-run4=pygame.image.load("game/run4.png")
-run5=pygame.image.load("game/run5.png")
-run6=pygame.image.load("game/run6.png")
-run7=pygame.image.load("game/run7.png")
-attack=pygame.image.load("game/atack.png")
+run1=pygame.image.load("Sprites/dog/run1.png")
+run2=pygame.image.load("Sprites/dog/run2.png")
+run3=pygame.image.load("Sprites/dog/run3.png")
+run4=pygame.image.load("Sprites/dog/run4.png")
+run5=pygame.image.load("Sprites/dog/run5.png")
+run6=pygame.image.load("Sprites/dog/run6.png")
+run7=pygame.image.load("Sprites/dog/run7.png")
+attack=pygame.image.load("Sprites/dog/atack.png")
 run1i=pygame.transform.flip(run1,True,False)
 run2i=pygame.transform.flip(run2,True,False)
 run3i=pygame.transform.flip(run3,True,False)
@@ -31,9 +31,9 @@ run=[run1,run2,run3,run4,run5,run6,run7,attack]
 run_inv=[run1i,run2i,run3i,run4i,run5i,run6i,run7i,attack_inv]
 runs=[run,run_inv]
 #Atacado
-hurt1=pygame.image.load("game/hurt1.png")
-hurt2=pygame.image.load("game/hurt2.png")
-hurt3=pygame.image.load("game/hurt3.png")
+hurt1=pygame.image.load("Sprites/dog/hurt1.png")
+hurt2=pygame.image.load("Sprites/dog/hurt2.png")
+hurt3=pygame.image.load("Sprites/dog/hurt3.png")
 
 hurt1i=pygame.transform.flip(hurt1,True,False)
 hurt2i=pygame.transform.flip(hurt2,True,False)
@@ -43,10 +43,10 @@ hurt=[hurt1,hurt2,hurt3]
 hurt_inv=[hurt1i,hurt2i,hurt3i]
 hurts=[hurt,hurt_inv]
 #Muere
-dead1=pygame.image.load("game/dead1.png")
-dead2=pygame.image.load("game/dead2.png")
-dead3=pygame.image.load("game/dead3.png")
-dead4=pygame.image.load("game/dead4.png")
+dead1=pygame.image.load("Sprites/dog/dead1.png")
+dead2=pygame.image.load("Sprites/dog/dead2.png")
+dead3=pygame.image.load("Sprites/dog/dead3.png")
+dead4=pygame.image.load("Sprites/dog/dead4.png")
 dead1i=pygame.transform.flip(dead1,True,False)
 dead2i=pygame.transform.flip(dead2,True,False)
 dead3i=pygame.transform.flip(dead3,True,False)
@@ -166,4 +166,3 @@ class Player(pygame.sprite.Sprite):
         if self.imagen>=len(dead)-1:
             self.imagen=len(dead)-1
         self.image=dies[self.direc][self.imagen]
-        
